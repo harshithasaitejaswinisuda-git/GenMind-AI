@@ -23,62 +23,65 @@ const MarketAnalyzer: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-100 ring-4 ring-black/5">
         <div className="flex gap-4">
           <input 
             value={query}
             onChange={e => setQuery(e.target.value)}
-            className="flex-1 border border-slate-200 rounded-xl px-6 py-4 text-lg focus:ring-2 focus:ring-indigo-500/20 focus:outline-none"
-            placeholder="Enter industry or trend (e.g. 'Gen AI impact on real estate marketing 2025')"
+            className="flex-1 border-2 border-zinc-100 rounded-2xl px-8 py-5 text-lg font-bold focus:ring-4 focus:ring-red-600/5 focus:border-red-600 focus:outline-none transition-all placeholder:text-zinc-300"
+            placeholder="Search market intelligence..."
           />
           <button 
             onClick={handleAnalyze}
             disabled={loading}
-            className="bg-slate-900 text-white font-bold px-8 rounded-xl hover:bg-slate-800 transition-colors disabled:opacity-50 flex items-center gap-3"
+            className="bg-black text-white font-black px-12 rounded-2xl hover:bg-red-600 transition-all active:scale-95 disabled:opacity-50 flex items-center gap-4 uppercase tracking-widest text-sm"
           >
-            {loading ? <i className="fas fa-spinner fa-spin"></i> : <i className="fas fa-search"></i>}
-            Analyze
+            {loading ? <i className="fas fa-circle-notch fa-spin"></i> : <i className="fas fa-satellite"></i>}
+            SCAN
           </button>
         </div>
       </div>
 
       {analysis && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-            <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-              <i className="fas fa-file-contract text-indigo-600"></i>
-              Deep Market Analysis
+          <div className="lg:col-span-2 bg-white p-10 rounded-3xl shadow-xl border border-zinc-100">
+            <h3 className="text-xl font-black text-black mb-8 flex items-center gap-4 uppercase tracking-tighter">
+              <span className="w-12 h-1 w-1 bg-red-600"></span>
+              Intelligence Report
             </h3>
-            <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed whitespace-pre-wrap">
+            <div className="prose prose-zinc max-w-none text-black leading-loose whitespace-pre-wrap font-medium">
               {analysis.summary}
             </div>
           </div>
           <div className="space-y-6">
-            <div className="bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
-              <h4 className="font-bold text-indigo-900 mb-4 flex items-center gap-2">
-                <i className="fas fa-link"></i>
-                Grounding Sources
+            <div className="bg-zinc-50 p-8 rounded-3xl border border-zinc-200">
+              <h4 className="font-black text-black text-sm uppercase tracking-widest mb-6 flex items-center gap-3">
+                <i className="fas fa-link text-red-600"></i>
+                Grounding
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {analysis.sources.map((src, i) => (
                   <li key={i}>
                     <a 
                       href={src.uri} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center gap-2 group"
+                      className="text-zinc-600 hover:text-red-600 text-xs font-bold flex items-center gap-3 group transition-colors"
                     >
-                      <i className="fas fa-external-link-alt text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
-                      <span className="truncate">{src.title}</span>
+                      <i className="fas fa-chevron-right text-[8px] text-red-600 transition-transform group-hover:translate-x-1"></i>
+                      <span className="truncate border-b border-transparent group-hover:border-red-600">{src.title}</span>
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-slate-900 p-6 rounded-2xl text-white">
-              <h4 className="font-bold mb-2">Pro Tip</h4>
-              <p className="text-slate-400 text-sm">
-                This analysis uses real-time Google Search grounding. Use this data for strategic quarterly planning.
+            <div className="bg-black p-8 rounded-3xl text-white shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <i className="fas fa-bolt text-red-600"></i>
+                <h4 className="font-black uppercase tracking-tighter text-sm italic">Mind Insight</h4>
+              </div>
+              <p className="text-zinc-400 text-xs font-medium leading-relaxed">
+                Grounding protocols verified via Google Search. This analysis is optimized for immediate strategic deployment.
               </p>
             </div>
           </div>

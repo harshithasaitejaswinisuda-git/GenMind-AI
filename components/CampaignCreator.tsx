@@ -23,38 +23,38 @@ const CampaignCreator: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-        <h2 className="text-xl font-bold text-slate-800 mb-6">Create New Campaign</h2>
+      <div className="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100">
+        <h2 className="text-xl font-black text-black mb-6 uppercase tracking-tight">Campaign Intelligence</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">Campaign Name</label>
+            <label className="block text-xs font-black text-zinc-400 uppercase tracking-widest mb-2">Project Label</label>
             <input
               required
               type="text"
-              placeholder="e.g. Q4 Growth Sprint"
-              className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+              placeholder="e.g. ALPHA_GROWTH_2025"
+              className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all font-medium"
               value={formData.name}
               onChange={e => setFormData({...formData, name: e.target.value})}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">Target Audience</label>
+            <label className="block text-xs font-black text-zinc-400 uppercase tracking-widest mb-2">Target Demographics</label>
             <input
               required
               type="text"
-              placeholder="e.g. CMOs of Mid-market SaaS companies"
-              className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+              placeholder="e.g. Enterprise CTOs"
+              className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all font-medium"
               value={formData.audience}
               onChange={e => setFormData({...formData, audience: e.target.value})}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">Campaign Goals</label>
+            <label className="block text-xs font-black text-zinc-400 uppercase tracking-widest mb-2">Primary Objectives</label>
             <textarea
               required
               rows={4}
-              placeholder="What are you trying to achieve?"
-              className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+              placeholder="Define mission success parameters..."
+              className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all font-medium"
               value={formData.goals}
               onChange={e => setFormData({...formData, goals: e.target.value})}
             ></textarea>
@@ -62,32 +62,32 @@ const CampaignCreator: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full bg-black text-white font-black py-4 rounded-xl hover:bg-red-600 transition-all transform active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3 uppercase tracking-widest"
           >
-            {loading ? <i className="fas fa-spinner fa-spin"></i> : <i className="fas fa-magic"></i>}
-            {loading ? 'Generating Campaign...' : 'Generate with Gemini'}
+            {loading ? <i className="fas fa-sync fa-spin"></i> : <i className="fas fa-crosshairs"></i>}
+            {loading ? 'Synthesizing Data...' : 'Generate Blueprint'}
           </button>
         </form>
       </div>
 
-      <div className="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-8 flex flex-col">
+      <div className="bg-zinc-100 border-2 border-dashed border-zinc-300 rounded-2xl p-8 flex flex-col relative overflow-hidden">
         {campaign ? (
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 animate-in fade-in slide-in-from-right-4 duration-500">
-            <div className="flex justify-between items-center mb-6">
-              <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">GEN AI OUTPUT</span>
-              <button className="text-indigo-600 text-sm font-bold hover:underline">Download PDF</button>
+          <div className="bg-white p-8 rounded-xl shadow-xl border-l-8 border-red-600 animate-in fade-in slide-in-from-right-8 duration-700">
+            <div className="flex justify-between items-center mb-8 pb-4 border-b border-zinc-100">
+              <span className="bg-black text-white text-[10px] font-black px-3 py-1 rounded uppercase tracking-tighter">AI Generated Asset</span>
+              <button className="text-red-600 text-xs font-black uppercase hover:underline">Export to PDF</button>
             </div>
-            <div className="prose prose-slate max-w-none whitespace-pre-wrap">
+            <div className="prose prose-zinc max-w-none whitespace-pre-wrap text-black leading-relaxed font-medium">
               {campaign.content}
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex flex-col items-center justify-center text-slate-400 text-center">
-            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-              <i className="fas fa-file-alt text-2xl"></i>
+          <div className="flex-1 flex flex-col items-center justify-center text-zinc-400 text-center">
+            <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+              <i className="fas fa-microchip text-3xl text-zinc-200"></i>
             </div>
-            <p className="font-medium">Your AI-generated campaign content will appear here.</p>
-            <p className="text-sm">Fill out the form to get started.</p>
+            <p className="font-black text-black uppercase tracking-tight">System Ready</p>
+            <p className="text-xs font-bold max-w-[200px] mt-2">Provide parameters to initiate generative campaign synthesis.</p>
           </div>
         )}
       </div>

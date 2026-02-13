@@ -24,47 +24,51 @@ const SalesPitcher: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
-      <div className="bg-indigo-900 rounded-2xl p-8 text-white">
-        <h2 className="text-2xl font-bold mb-6">Sales Pitch Architect</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label className="text-indigo-200 text-sm">Product or Service</label>
+      <div className="bg-gradient-to-br from-black to-zinc-800 rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 blur-[100px] rounded-full"></div>
+        <h2 className="text-3xl font-black mb-8 italic tracking-tighter">Pitch <span className="text-red-600">Architect</span></h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-3">
+            <label className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.2em]">Solution Category</label>
             <input 
               value={product}
               onChange={e => setProduct(e.target.value)}
-              className="w-full bg-indigo-800/50 border border-indigo-700 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
-              placeholder="e.g. AI-driven CRM automation"
+              className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 focus:ring-2 focus:ring-red-600 focus:outline-none transition-all placeholder:text-zinc-700"
+              placeholder="e.g. Quantum Analytics Engine"
             />
           </div>
-          <div className="space-y-2">
-            <label className="text-indigo-200 text-sm">Target Buyer Persona</label>
+          <div className="space-y-3">
+            <label className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.2em]">Target Authority</label>
             <input 
               value={persona}
               onChange={e => setPersona(e.target.value)}
-              className="w-full bg-indigo-800/50 border border-indigo-700 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
-              placeholder="e.g. Overwhelmed Sales Manager"
+              className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 focus:ring-2 focus:ring-red-600 focus:outline-none transition-all placeholder:text-zinc-700"
+              placeholder="e.g. Fintech Operations VP"
             />
           </div>
         </div>
         <button 
           onClick={handleGenerate}
           disabled={loading}
-          className="mt-8 bg-white text-indigo-900 font-bold px-8 py-3 rounded-lg hover:bg-indigo-50 transition-colors disabled:opacity-50"
+          className="mt-10 bg-red-600 text-white font-black px-10 py-4 rounded-xl hover:bg-white hover:text-black transition-all disabled:opacity-50 uppercase tracking-widest text-sm shadow-xl shadow-red-900/40"
         >
-          {loading ? 'Crafting...' : 'Craft Perfect Pitch'}
+          {loading ? 'Processing Logic...' : 'Craft Conversion Script'}
         </button>
       </div>
 
       {pitch && (
-        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-          <div className="border-b border-slate-100 p-6 flex justify-between items-center bg-slate-50/50">
-            <h3 className="font-bold text-slate-800">Generated Pitch: {pitch.title}</h3>
-            <div className="flex gap-2">
-              <button className="p-2 hover:bg-slate-200 rounded-lg transition-colors"><i className="fas fa-copy text-slate-500"></i></button>
-              <button className="p-2 hover:bg-slate-200 rounded-lg transition-colors"><i className="fas fa-share-alt text-slate-500"></i></button>
+        <div className="bg-white border border-zinc-200 rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-500">
+          <div className="border-b border-zinc-100 p-8 flex justify-between items-center bg-zinc-50/50">
+            <div>
+              <p className="text-[10px] font-black text-red-600 uppercase tracking-widest mb-1">Deployment Ready</p>
+              <h3 className="font-black text-black text-xl">{pitch.title}</h3>
+            </div>
+            <div className="flex gap-3">
+              <button className="w-10 h-10 flex items-center justify-center hover:bg-black hover:text-white rounded-full transition-all border border-zinc-200"><i className="fas fa-copy"></i></button>
+              <button className="w-10 h-10 flex items-center justify-center hover:bg-black hover:text-white rounded-full transition-all border border-zinc-200"><i className="fas fa-share-alt"></i></button>
             </div>
           </div>
-          <div className="p-8 prose prose-indigo max-w-none whitespace-pre-wrap leading-relaxed text-slate-700">
+          <div className="p-10 prose prose-red max-w-none whitespace-pre-wrap leading-relaxed text-zinc-900 font-medium">
             {pitch.pitch}
           </div>
         </div>
