@@ -28,7 +28,7 @@ const MarketAnalyzer: React.FC = () => {
           <input 
             value={query}
             onChange={e => setQuery(e.target.value)}
-            className="flex-1 border-2 border-zinc-100 rounded-2xl px-8 py-5 text-lg font-bold focus:ring-4 focus:ring-red-600/5 focus:border-red-600 focus:outline-none transition-all placeholder:text-zinc-300"
+            className="flex-1 border-2 border-zinc-100 rounded-2xl px-8 py-5 text-lg font-bold text-black focus:ring-4 focus:ring-red-600/5 focus:border-red-600 focus:outline-none transition-all placeholder:text-zinc-300"
             placeholder="Search market intelligence..."
           />
           <button 

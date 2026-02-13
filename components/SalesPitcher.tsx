@@ -33,7 +33,7 @@ const SalesPitcher: React.FC = () => {
             <input 
               value={product}
               onChange={e => setProduct(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 focus:ring-2 focus:ring-red-600 focus:outline-none transition-all placeholder:text-zinc-700"
+              className="w-full bg-white border border-white/10 rounded-xl px-5 py-3 text-black focus:ring-2 focus:ring-red-600 focus:outline-none transition-all placeholder:text-zinc-400 font-medium"
               placeholder="e.g. Quantum Analytics Engine"
             />
           </div>
@@ -42,7 +42,7 @@ const SalesPitcher: React.FC = () => {
             <input 
               value={persona}
               onChange={e => setPersona(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 focus:ring-2 focus:ring-red-600 focus:outline-none transition-all placeholder:text-zinc-700"
+              className="w-full bg-white border border-white/10 rounded-xl px-5 py-3 text-black focus:ring-2 focus:ring-red-600 focus:outline-none transition-all placeholder:text-zinc-400 font-medium"
               placeholder="e.g. Fintech Operations VP"
             />
           </div>

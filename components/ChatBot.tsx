@@ -90,7 +90,7 @@ const ChatBot: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Command input..."
-                className="flex-1 bg-zinc-100 border border-transparent rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-600/10 focus:bg-white transition-all font-medium"
+                className="flex-1 bg-zinc-100 border border-transparent rounded-xl px-4 py-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-red-600/10 focus:bg-white transition-all font-medium"
               />
               <button 
                 onClick={handleSend}

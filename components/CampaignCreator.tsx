@@ -32,7 +32,7 @@ const CampaignCreator: React.FC = () => {
               required
               type="text"
               placeholder="e.g. ALPHA_GROWTH_2025"
-              className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all font-medium"
+              className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl text-black focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all font-medium"
               value={formData.name}
               onChange={e => setFormData({...formData, name: e.target.value})}
             />
@@ -43,7 +43,7 @@ const CampaignCreator: React.FC = () => {
               required
               type="text"
               placeholder="e.g. Enterprise CTOs"
-              className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all font-medium"
+              className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl text-black focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all font-medium"
               value={formData.audience}
               onChange={e => setFormData({...formData, audience: e.target.value})}
             />
@@ -54,7 +54,7 @@ const CampaignCreator: React.FC = () => {
               required
               rows={4}
               placeholder="Define mission success parameters..."
-              className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all font-medium"
+              className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl text-black focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all font-medium"
               value={formData.goals}
               onChange={e => setFormData({...formData, goals: e.target.value})}
             ></textarea>

@@ -35,7 +35,7 @@ Walter White, Blue Meth Co, basic inquiry`;
             rows={5}
             value={input}
             onChange={e => setInput(e.target.value)}
-            className="w-full bg-zinc-50 border border-zinc-200 rounded-2xl px-6 py-4 focus:ring-4 focus:ring-red-600/5 focus:border-red-600 focus:outline-none text-sm font-medium"
+            className="w-full bg-zinc-50 border border-zinc-200 rounded-2xl px-6 py-4 text-black focus:ring-4 focus:ring-red-600/5 focus:border-red-600 focus:outline-none text-sm font-medium"
             placeholder="Paste raw lead data, bios, or thread snippets..."
           />
           <div className="flex justify-between items-center">
