@@ -7,23 +7,35 @@ import SalesPitcher from './components/SalesPitcher';
 import MarketAnalyzer from './components/MarketAnalyzer';
 import LeadScorer from './components/LeadScorer';
 import ChatBot from './components/ChatBot';
+import Auth from './components/Auth';
 import { AppView } from './types';
 
 const App: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentView, setCurrentView] = useState<AppView>(AppView.DASHBOARD);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
+
+  const goBack = () => setCurrentView(AppView.DASHBOARD);
 
   const renderView = () => {
     switch (currentView) {
       case AppView.DASHBOARD:
         return <Dashboard />;
       case AppView.CAMPAIGNS:
-        return <CampaignCreator />;
+        return <CampaignCreator onBack={goBack} />;
       case AppView.SALES_PITCH:
-        return <SalesPitcher />;
+        return <SalesPitcher onBack={goBack} />;
       case AppView.MARKET_ANALYSIS:
-        return <MarketAnalyzer />;
+        return <MarketAnalyzer onBack={goBack} />;
       case AppView.LEAD_SCORING:
-        return <LeadScorer />;
+        return <LeadScorer onBack={goBack} />;
       case AppView.INSIGHTS:
         return (
           <div className="flex flex-col items-center justify-center h-[60vh] text-center space-y-6">
@@ -35,7 +47,7 @@ const App: React.FC = () => {
                <p className="text-zinc-500 max-w-sm font-medium">Modeling engine is currently indexing deep sales archives. System availability expected shortly.</p>
              </div>
              <button 
-              onClick={() => setCurrentView(AppView.DASHBOARD)} 
+              onClick={goBack} 
               className="bg-red-600 text-white px-8 py-3 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-black transition-colors"
              >
                Return to Core
@@ -50,6 +62,10 @@ const App: React.FC = () => {
   const getTitle = () => {
     return currentView.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   };
+
+  if (!isAuthenticated) {
+    return <Auth onLogin={handleLogin} />;
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -72,7 +88,12 @@ const App: React.FC = () => {
             <div className="flex items-center gap-4 pl-8 border-l border-zinc-200">
               <div className="text-right">
                 <p className="text-xs font-black text-black uppercase tracking-tight">System Admin</p>
-                <p className="text-[10px] text-red-600 font-bold uppercase tracking-widest mt-1">Growth Tier</p>
+                <button 
+                  onClick={handleLogout}
+                  className="text-[10px] text-red-600 font-bold uppercase tracking-widest mt-1 hover:underline"
+                >
+                  Terminate Session
+                </button>
               </div>
               <div className="relative">
                 <img src="https://picsum.photos/100/100" alt="Profile" className="w-14 h-14 rounded-2xl border-2 border-white shadow-2xl grayscale" />

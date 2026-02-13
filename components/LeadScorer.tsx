@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { geminiService } from '../services/geminiService';
 import { Lead } from '../types';
 
-const LeadScorer: React.FC = () => {
+interface LeadScorerProps {
+  onBack: () => void;
+}
+
+const LeadScorer: React.FC<LeadScorerProps> = ({ onBack }) => {
   const [input, setInput] = useState('');
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(false);
@@ -26,7 +30,15 @@ Sarah Connor, Skynet, looking for security automation
 Walter White, Blue Meth Co, basic inquiry`;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      <button 
+        onClick={onBack}
+        className="flex items-center gap-2 text-zinc-400 hover:text-black transition-colors text-xs font-black uppercase tracking-widest"
+      >
+        <i className="fas fa-arrow-left text-[10px]"></i>
+        Back to Dashboard
+      </button>
+
       <div className="bg-white p-10 rounded-3xl shadow-sm border border-zinc-100">
         <h2 className="text-2xl font-black text-black mb-4 uppercase tracking-tighter italic">Predictive Intelligence</h2>
         <p className="text-zinc-500 mb-8 text-sm font-medium">Input prospect metadata to calculate conversion probabilities.</p>

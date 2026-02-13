@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { geminiService } from '../services/geminiService';
 import { SalesPitch } from '../types';
 
-const SalesPitcher: React.FC = () => {
+interface SalesPitcherProps {
+  onBack: () => void;
+}
+
+const SalesPitcher: React.FC<SalesPitcherProps> = ({ onBack }) => {
   const [product, setProduct] = useState('');
   const [persona, setPersona] = useState('');
   const [pitch, setPitch] = useState<SalesPitch | null>(null);
@@ -23,7 +27,15 @@ const SalesPitcher: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="max-w-4xl mx-auto space-y-6">
+      <button 
+        onClick={onBack}
+        className="flex items-center gap-2 text-zinc-400 hover:text-black transition-colors text-xs font-black uppercase tracking-widest"
+      >
+        <i className="fas fa-arrow-left text-[10px]"></i>
+        Back to Dashboard
+      </button>
+
       <div className="bg-gradient-to-br from-black to-zinc-800 rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 blur-[100px] rounded-full"></div>
         <h2 className="text-3xl font-black mb-8 italic tracking-tighter">Pitch <span className="text-red-600">Architect</span></h2>

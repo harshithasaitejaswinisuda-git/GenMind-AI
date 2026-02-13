@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { geminiService } from '../services/geminiService';
 import { MarketInsight } from '../types';
 
-const MarketAnalyzer: React.FC = () => {
+interface MarketAnalyzerProps {
+  onBack: () => void;
+}
+
+const MarketAnalyzer: React.FC<MarketAnalyzerProps> = ({ onBack }) => {
   const [query, setQuery] = useState('');
   const [analysis, setAnalysis] = useState<MarketInsight | null>(null);
   const [loading, setLoading] = useState(false);
@@ -22,7 +26,15 @@ const MarketAnalyzer: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      <button 
+        onClick={onBack}
+        className="flex items-center gap-2 text-zinc-400 hover:text-black transition-colors text-xs font-black uppercase tracking-widest"
+      >
+        <i className="fas fa-arrow-left text-[10px]"></i>
+        Back to Dashboard
+      </button>
+
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-100 ring-4 ring-black/5">
         <div className="flex gap-4">
           <input 
